@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talking App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 300px;
+            height: 100px;
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Talking App</h1>
+    <textarea id="text-input" placeholder="Type something..."></textarea>
+    <button id="speak-button">Speak</button>
+
+    <script>
+        document.getElementById('speak-button').addEventListener('click', function() {
+            const textInput = document.getElementById('text-input').value;
+            if (textInput) {
+                const speech = new SpeechSynthesisUtterance(textInput);
+                window.speechSynthesis.speak(speech);
+            } else {
+                alert("Please enter some text to speak.");
+            }
+        });
+    </script>
+
+</body>
+</html>
